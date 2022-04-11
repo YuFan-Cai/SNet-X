@@ -1,5 +1,5 @@
 # SNet-X
-Using Convolution-X and joint training model to remove speckle noise of SAR image
+Using Convolution-X and joint training model to remove speckle noise of SAR image.
 
 For details, see ()
 
