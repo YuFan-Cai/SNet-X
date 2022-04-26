@@ -3,6 +3,24 @@ import torch
 from einops import rearrange
 
 
+# Conv → out = torch.sum(torch.einsum('b h n k, h k d -> b h n d', out, self.weight), dim=1)
+
+# Res-Conv →  center = out[:, :, :, self.kernel // 2].unsqueeze(dim=-1)
+#             center_ = rearrange(center, 'b c n l -> b n (c l)', l=1)
+#             center_ = self.linear(center_)
+#             out = torch.sum(torch.einsum('b h n k, h k d -> b h n d', out, self.weight), dim=1) + center_
+
+# LMMSE-Conv → Mean = out.mean(dim=-1, keepdim=True)
+#              Mean_ = rearrange(Mean, 'b c n l -> b n (c l)', l=1)
+#              Mean_ = self.linear(Mean_)
+#              out = torch.sum(torch.einsum('b h n k, h k d -> b h n d', out - Mean, self.weight), dim=1) + Mean_
+
+# Diffusion-Conv → center = out[:, :, :, self.kernel // 2].unsqueeze(dim=-1)
+#                  center_ = rearrange(center, 'b c n l -> b n (c l)', l=1)
+#                  center_ = self.linear(center_)
+#                  out = torch.sum(torch.einsum('b h n k, h k d -> b h n d', out - center, self.weight), dim=1) + center_
+
+
 class CONV_A(nn.Module):
     def __init__(self, in_channel, out_channel, kernel_size=3, dilation=1):
         super(CONV_A, self).__init__()
@@ -19,16 +37,19 @@ class CONV_A(nn.Module):
         torch.nn.init.xavier_uniform_(kernel, gain=nn.init.calculate_gain('relu'))
 
     def forward(self, x):
+        # Unfold
         _, _, h, w = x.shape
         out = self.pad(x)
         out = self.unfold(out)
         out = rearrange(out, 'b (c k) n -> b c n k', k=self.kernel)
 
+        # Numerical Reconstruction
         Mean = out.mean(dim=-1, keepdim=True)
         Mean_ = rearrange(Mean, 'b c n l -> b n (c l)', l=1)
         Mean_ = self.linear(Mean_)
-
         out = torch.sum(torch.einsum('b h n k, h k d -> b h n d', out - Mean, self.weight), dim=1) + Mean_
+
+        # Fold
         out = rearrange(out, 'b (h w) c -> b c h w', h=h, w=w)
         return out
 
