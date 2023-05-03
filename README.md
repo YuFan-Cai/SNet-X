@@ -30,18 +30,23 @@ The Level-set method can be used to compare with the denoising evaluation of Tea
 This library also provides the following speckle noise filtering methods：
 
 Local filter：
+
 Median (?), Lee (Lee et al. 1981), Frost (Frost et al. 1982), Kuan (Kuan et al. 1985), GAMMA-MAP (Lopes et al. 1990).
 
 Non-Local filter：
+
 NLM (Buades et al. 2005), PPB (Deledalle et al. 2009), SAR-BM3D (Parrilli et al. 2012), FANS (Cozzolino et al. 2014), MuLog-BM3D (Deledalle et al. 2017), RABASAR (Zhao et al. 2019).
 
 Wavelet filter：
+
 POAC (Mastriani et al. 2016).
 
 Supervised learning:
+
 SAR-CNN (Chierchia et al. 2017), ID-CNN (Wang et al. 2017), SAR-DRN (Zhang et al. 2018), DoPAMINE (Joo et al. 2019), MONet (Vitale et al. 2021), SD-Net (Cai et al. 2021), deSpeckNet (Mullissa et al. 2022), SNet-X (Cai et al. 2023).
 
 Semi-supervised learning:
+
 Noise2Noise (Lehtinen et al. 2018), SAR2SAR (Dalsasso et al. 2021), Speckle2Void (Molini et al. 2022).
 
 Please refer to the relevant literature for the details of the algorithm.
