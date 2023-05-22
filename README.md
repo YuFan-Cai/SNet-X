@@ -11,7 +11,7 @@ This code base provides the following test images：
 | ------------- | --------------- | ----------- | ---------------------------- | ---------- | ----------- |
 |     CP-SAR    |   5.3 (C-band)  | Circular RR |            0.375             |  Airborne  |      1      |
 |     ERS-1     |   5.3 (C-band)  |  Linear VV  |            9.677             | Spaceborne |     775     |
-|  Sentinel-1A  |   5.4 (C-band)  |  Linear VH  |            1.500             | Spaceborne |     693     |
+|  Sentinel-1A  |   5.4 (C-band)  |  Linear VH  |            20.50             | Spaceborne |     693     |
 | Virtual-SAR-A |     Optical     |     RGB     |            30-0.2            |  Airborne  |      3*     |
 | Virtual-SAR-B |     Optical     |     RGB     |            30-0.2            |  Airborne  |      3*     |
 
