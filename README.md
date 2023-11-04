@@ -3,7 +3,9 @@ Using Convolution-X (LMMSE-Conv & Diffusion-Conv) and joint-training allows the 
 
 SNet-X is applicable to any polarization mode and can denoise each polarimetric channel of the SAR image one by one.
 
-The paper will be published in IEEE IGARSS-2023, and the link will be updated subsequently. For more details, please refer to the paper.
+The paper has been published in IEEE IGARSS-2023:
+https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=POLSAR%20DESPECKLING%20NEURAL%20NETWORK%20BASED%20ON%20LOCAL%20TEXTURE%20FILTERS
+For more details, please refer to the paper.
 
 This code base provides the following test images：
 
